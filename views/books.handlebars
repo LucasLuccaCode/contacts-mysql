@@ -1,0 +1,27 @@
+<h1>Livros salvos</h1>
+
+
+<section class="c-table">
+    {{#if books.length}}
+    <ul class="c-books">
+        {{#each books}}
+        {{#with this}}
+            <li>
+                <h2>{{title}}</h2>
+                <h3>{{author}}</h3>
+                <p>{{page_count}} páginas</p>
+                <div class="actions">
+                    <a style="--clr:#efefff" href="/books/{{id}}">Ver</a>
+                    <a style="--clr:#efef20" href="/books/{{id}}">Editar</a>
+                    <form action="/books/{{id}}" method="post">
+                        <input style="--clr:#ff3030" type="submit" value="Deletar">
+                    </form>
+                </div>
+            </li>
+        {{/with}}
+        {{/each}}
+    </ul>
+    {{else}}
+        <p class="no-books">Nenhum livro salvo ainda...</p>
+    {{/if}}
+</section>
