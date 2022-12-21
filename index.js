@@ -15,7 +15,7 @@ const bookRoutes = require("./routes/bookRoutes")
 app.use("/books", bookRoutes)
 
 app.get("/", (req, res) => {
-    res.render("home")
+    res.render("home", { book: {}, btnText: "Adicionar" })
 })
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

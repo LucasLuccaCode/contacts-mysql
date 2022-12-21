@@ -27,15 +27,37 @@ router.route("/")
     })
 
 
-router.post("/:bookId", (req, res) => {
-    const { bookId } = req.params
+router.route("/:bookId")
+    .post((req, res) => {
+        const { bookId } = req.params
 
-    const query = `DELETE FROM books WHERE id = ?`
+        const query = `DELETE FROM books WHERE id = ?`
 
-    connection.query(query, [bookId], (err) => {
-        if (err) throw err
-        res.redirect("/books")
+        connection.query(query, [bookId], (err) => {
+            if (err) throw err
+            res.redirect("/books")
+        })
     })
-})
+
+router.route("/:bookId/edit")
+    .get((req, res) => {
+        const { bookId } = req.params
+
+        const query = `SELECT * FROM books WHERE id = ?`
+        connection.query(query, [bookId], (err, results) => {
+            if (err) throw err
+            res.render("book-edit", { book: results[0], btnText: "Atualizar" })
+        })
+    })
+    .post((req, res) => {
+        const { id: bookId, title, author, page_count } = req.body
+        const query = `UPDATE books SET title = ?, author = ?, page_count = ? WHERE id = ?`
+        const data = [title, author, page_count, bookId]
+
+        connection.query(query, data, (err) => {
+            if (err) throw err
+            res.redirect("/books")
+        })
+    })
 
 module.exports = router

@@ -1,7 +1,38 @@
-<form action="/books" method="POST" class="c-form">
-    <h2>Cadastre um novo livro</h2>
-    <input type="text" name="title" id="title" placeholder="Digite o título do livro..." required />
-    <input type="text" name="author" id="author" placeholder="Digite o nome do autor..." required />
-    <input type="number" name="page_count" id="page_count" placeholder="Digite o número de páginas do livro..." required />
-    <button type="submit" class="btn">Adicionar</button>
+{{#if book.title}}
+    <form action="/books/{{book.id}}/edit" method="POST" class="c-form">
+{{else}}
+    <form action="/books" method="POST" class="c-form">
+{{/if}}
+    {{#if book.title}}
+        <h2>Editando o livro</h2>
+    {{else}}
+        <h2>Cadastre um novo livro</h2>
+    {{/if}}
+    <input 
+        type="hidden" 
+        name="id" 
+        value="{{book.id}}"
+    />
+    <input 
+        type="text" 
+        name="title" 
+        placeholder="Digite o título do livro..." 
+        required
+        value="{{book.title}}" 
+    />
+    <input 
+        type="text" 
+        name="author" 
+        placeholder="Digite o nome do autor..." 
+        required
+        value="{{book.author}}" 
+    />
+    <input 
+        type="number" 
+        name="page_count" 
+        placeholder="Digite o número de páginas do livro..." 
+        required
+        value="{{book.page_count}}" 
+    />
+    <button type="submit" class="btn">{{btnText}}</button>
 </form>
