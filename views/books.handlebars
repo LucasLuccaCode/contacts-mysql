@@ -6,14 +6,14 @@
         {{#each books}}
         {{#with this}}
             <li>
-                <h2>{{title}}</h2>
-                <h3>{{author}}</h3>
+                <h2 class="nowrap">{{title}}</h2>
+                <h3 class="nowrap">{{author}}</h3>
                 <p>{{page_count}} páginas</p>
                 <div class="actions">
                     <a style="--clr:#efefff" href="/books/{{id}}">Ver</a>
-                    <a style="--clr:#efef20" href="/books/{{id}}/edit">Editar</a>
+                    <a style="--clr:#ffff80" href="/books/{{id}}/edit">Editar</a>
                     <form action="/books/{{id}}" method="post">
-                        <input style="--clr:#ff3030" type="submit" value="Deletar">
+                        <input style="--clr:#ff80bf" type="submit" value="Deletar">
                     </form>
                 </div>
             </li>
