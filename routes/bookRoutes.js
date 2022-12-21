@@ -28,6 +28,16 @@ router.route("/")
 
 
 router.route("/:bookId")
+    .get((req, res) => {
+        const { bookId } = req.params
+
+        const query = `SELECT * FROM books WHERE id = ?`
+
+        connection.query(query, [bookId], (err, results) => {
+            if (err) throw err
+            res.render("show-book", { book: results[0] })
+        })
+    })
     .post((req, res) => {
         const { bookId } = req.params
 
