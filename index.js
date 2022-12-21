@@ -11,6 +11,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static("public"))
 
+const bookRoutes = require("./routes/bookRoutes")
+app.use("/books", bookRoutes)
+
 app.get("/", (req, res) => {
     res.render("home")
 })

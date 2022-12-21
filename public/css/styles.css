@@ -149,6 +149,26 @@ main {
     color: var(--details-color);
 }
 
+/* Table */
+.c-table {
+    table-layout: fixed;
+    display: flex;
+    
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem .8rem;
+    background: var(--secondary-color);
+    width: 700px;
+    border-radius: .5rem;
+    margin: 0 auto;
+    max-width: calc(100% - (var(--margin-h) * 2));
+    margin-top: 1rem;
+}
+
+.c-table th {
+    font-size: .9rem;
+    color: var(--details-color);
+}
 
 /* Footer */
 
