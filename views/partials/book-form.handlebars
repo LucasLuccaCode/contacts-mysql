@@ -1,7 +1,7 @@
 {{#if book.title}}
     <form action="/books/{{book.id}}/edit" method="POST" class="c-form">
 {{else}}
-    <form action="/books" method="POST" class="c-form">
+    <form action="/books/add" method="POST" class="c-form">
 {{/if}}
     {{#if book.title}}
         <h2>Editando o livro</h2>
